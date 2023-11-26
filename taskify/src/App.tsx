@@ -1,5 +1,3 @@
-// import React from 'react'
-
 import { useState } from "react"
 import InputField from "./components/InputField"
 import { Todo } from "./modal"
@@ -8,7 +6,7 @@ import Todolist from "./components/Todolist"
 const App = () => {
   const [todo, setTodo] = useState<string>("")
   const [todos , setTodos] = useState<Todo[]>([])
-  
+  const [completedTodos , setCompletedTodos ] =useState<Todo[]>([])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,13 +21,14 @@ const App = () => {
       setTodo('')
     }
 }
+
   
   return (
     <section className="section-container">
       <div className="section-center">
       <h1 className="section-title">taskify</h1>
       <InputField todo={todo} setTodo={setTodo} handleSubmit={handleSubmit}/>
-      <Todolist todos={todos} setTodos={setTodos} />
+      <Todolist todos={todos} setTodos={setTodos}  completedTodos={completedTodos} setCompletedTodos={setCompletedTodos}/>
       </div>
     </section>
   )

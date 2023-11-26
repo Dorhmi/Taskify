@@ -5,17 +5,17 @@ import React, { useEffect, useRef, useState } from "react";
 
 
 
-
 interface props {
     id:number;
     todo:string;
     todos: Todo[];
     isdone:boolean;
+    index:number;
     setTodos:React.Dispatch<React.SetStateAction<Todo[]>>
 }
 
 
-const SingleTodo: React.FC<props> = ({todo , id , todos , isdone , setTodos}) => {
+const SingleTodo: React.FC<props> = ({todo , id , todos , isdone , setTodos , index}) => {
     const [isedit , setIsedit] = useState<boolean>(false);
     const [editTodo , setEditTodo] = useState<string>(todo);
     const inputRef = useRef<HTMLInputElement>(null) 
@@ -46,7 +46,8 @@ const handleEdit = (e:React.FormEvent , id:number) => {
 
 
 return (
-    <form className="article-container" onSubmit={(e)=>{handleEdit(e,id)}}>
+    <form className="article-container" 
+    onSubmit={(e)=>{handleEdit(e,id)}}>
         {isedit ?(<input className="input-value" 
         type="text" value={editTodo} 
         onChange={(e)=>{setEditTodo(e.target.value)}} 
