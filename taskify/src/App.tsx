@@ -8,7 +8,6 @@ import Todolist from "./components/Todolist"
 const App = () => {
   const [todo, setTodo] = useState<string>("")
   const [todos , setTodos] = useState<Todo[]>([])
-  console.log(todos);
   
 
   const handleSubmit = (e: React.FormEvent) => {
